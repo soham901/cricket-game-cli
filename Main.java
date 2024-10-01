@@ -5,6 +5,7 @@ public class Main {
     private static int PLAYERS_PER_TEAM = 5;
     private static int OVERS = 5;
     private static int BALLS_PER_OVER = 6;
+    private static boolean AUTO_PLAY = true;
 
     private static Random random = new Random();
     private static Scanner sc = new Scanner(System.in);
@@ -17,7 +18,8 @@ public class Main {
         System.out.println("\nTeam A scored " + teamAScore + " runs.");
 
         System.out.println("\nPress Enter to start Team B's innings...");
-        sc.next();
+        if (!AUTO_PLAY)
+            sc.next();
 
         int teamBScore = play("Team B");
         System.out.println("\nTeam B scored " + teamBScore + " runs.");
@@ -45,7 +47,8 @@ public class Main {
                 }
 
                 System.out.print("Ball " + ball + ": Press Enter to bowl...");
-                sc.next();
+                if (!AUTO_PLAY)
+                    sc.next();
 
                 int run = getRandomBall();
                 if (run == -1) {
