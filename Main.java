@@ -11,11 +11,14 @@ public class Main {
     private static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
+        hr();
         System.out.println("Welcome to CLI Cricket!");
         System.out.println("Each team will bat for " + OVERS + " overs (" + (OVERS * BALLS_PER_OVER) + " balls).");
 
         int teamAScore = play("Team A");
         System.out.println("\nTeam A scored " + teamAScore + " runs.");
+
+        hr();
 
         System.out.println("\nPress Enter to start Team B's innings...");
         if (!AUTO_PLAY)
@@ -23,6 +26,8 @@ public class Main {
 
         int teamBScore = play("Team B");
         System.out.println("\nTeam B scored " + teamBScore + " runs.");
+
+        hr();
 
         if (teamAScore > teamBScore) {
             System.out.println("\nTeam A wins by " + (teamAScore - teamBScore) + " runs!");
@@ -69,8 +74,10 @@ public class Main {
 
     private static int getRandomBall() {
         int outcome = random.nextInt(8);
-        if (outcome == 7)
-            return -1; // Wicket
-        return outcome;
+        return (outcome == 7) ? -1 : outcome;
+    }
+
+    private static void hr() {
+        System.out.println("\n------------------------------------------------------------------------------\n");
     }
 }
